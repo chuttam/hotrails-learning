@@ -1,0 +1,14 @@
+en:
+  simple_form:
+    placeholders:
+      task:
+        name: Name of your task
+    labels:
+      task:
+        name: Name
+
+  helpers:
+    submit:
+      task:
+        create: Create task
+        update: Update task
