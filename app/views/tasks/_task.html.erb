@@ -1,16 +1,21 @@
-<div class="task">
-  <%= link_to task.name, task_path(task), class: task.complete? ? 'task--complete' : '' %>
-  <div class="task__actions">
-    <%= button_to task.complete? ? "Unmark Done" : "Mark Done",
-                  toggle_complete_task_path(task),
-                  method: :put,
+<%= turbo_frame_tag task do %>
+  <div class="task">
+    <%= link_to task.name,
+                task_path(task),
+                data: { turbo_frame: "_top" },
+                class: task.complete? ? 'task--complete' : '' %>
+    <div class="task__actions">
+      <%= button_to task.complete? ? "Unmark Done" : "Mark Done",
+                    toggle_complete_task_path(task),
+                    method: :put,
+                    class: "btn btn--light" %>
+      <%= button_to "Delete",
+                    task_path(task),
+                    method: :delete,
+                    class: "btn btn--light" %>
+      <%= link_to "Edit",
+                  edit_task_path(task),
                   class: "btn btn--light" %>
-    <%= button_to "Delete",
-                  task_path(task),
-                  method: :delete,
-                  class: "btn btn--light" %>
-    <%= link_to "Edit",
-                edit_task_path(task),
-                class: "btn btn--light" %>
+    </div>
   </div>
-</div>
+<% end %>
