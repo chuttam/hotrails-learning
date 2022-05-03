@@ -2,3 +2,4 @@
 
 <% # Clear out the turbo frame for the new task creation %>
 <%= turbo_stream.update Task.new, "" %>
+<%= render_turbo_stream_flash_messages %>
